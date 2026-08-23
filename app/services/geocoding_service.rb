@@ -1,9 +1,11 @@
 #koordinat olusturma servisi (lon-lat)
 require 'net/http'
 class GeocodingService
-    def GeocodingService.call(address) #class methodu
+    def GeocodingService.call(location) #class methodu
+
+        location = location.titleize #mevcut konum bilgisini titleize yapar (ilk harf buyuk)
         #adres metnini alir, nomimatim'e gonderir, sonuc yoksa nil varsa lat/lng degerleri doner
-            query = URI.encode_www_form ([[ 'q' , address ], [ 'format' , "json" ], [ 'limit' , 1], ['addressdetails', 1]])
+            query = URI.encode_www_form ([[ 'q' , location ], [ 'format' , "json" ], [ 'limit' , 1], ['addressdetails', 1]])
             #addressdetails = 1 yapinca adres parcalara ayrilabildi
             url = 'https://nominatim.openstreetmap.org/search' + "?" + query
             url = URI.parse(url)

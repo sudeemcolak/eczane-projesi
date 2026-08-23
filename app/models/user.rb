@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    has_many :orders #user birden fazla order verebilir
 
     validates :name, presence: true
     validates :surname, presence: true
