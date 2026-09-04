@@ -31,20 +31,26 @@ Rails.application.routes.draw do
       # patch "/profile" , to: "users#update"
       resources :users, only: [:show, :update]
 
-
-
       #SESSIONS
       post "/login" , to: "sessions#create" #oturum olusturmak.
       delete "/logout" , to: "sessions#destroy" #oturum kapama
       
+      #PHARMACISTSESSIONS
+      post "/pharmacist/login" , to: "pharmacist_sessions#create" #oturum acma
+      delete "/pharmacist/logout" , to: "pharmacist_sessions#destroy" #oturum kapama
+
       #PHARMACIES
       get "/nearby" , to: "pharmacies#nearby"
 
-
+      #PRESCRIPTIONS // RECETE 
+      post "/prescriptions/barcode" , to: "prescriptions#barcode"
 
       #ORDER_CONTROLLERS
+      resources :orders, only: [:create, :show, :index] 
 
-      #PRESCRIPTIONS // RECETE 
+      scope "pharmacist" do
+        resources :orders, controller: "pharmacist_orders", only: [:index, :show, :update]
+      end
 
     end
 

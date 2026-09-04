@@ -1,6 +1,7 @@
 module Api
     module V1
         class PharmaciesController < ApplicationController
+            #kullanıcının konumuna göre en yakın eczaneleri getirme
             before_action :current_user
 
             def nearby

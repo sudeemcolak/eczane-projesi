@@ -27,7 +27,7 @@ module Api
             end
 
             def destroy
-                #token blackliste alinir
+                #token blackliste alinacak
                 #logout islemi
                 render json: {message: "The session has been successfully closed"}
             end

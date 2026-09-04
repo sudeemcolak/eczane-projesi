@@ -31,4 +31,21 @@ class ApplicationController < ActionController::API
         #value to be rendered.
         
     end
+
+    def current_pharmacist
+        value = request.headers["Authorization"]
+        if value.nil?
+            return nil
+        end
+
+        jwt = value.split[1]
+        decoded_token = JsonWebToken.decode(jwt)
+
+        if decoded_token == nil
+            return nil
+        end
+
+        id = decoded_token["pharmacist_id"]
+        @current_pharmacist = Pharmacist.find(id)
+    end
 end
