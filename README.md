@@ -1,24 +1,55 @@
-# README
+# Eczane Backend - Rails API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Eczane uygulamasının kullanıcı, eczane, sipariş, stok ve eczacı işlemlerini yöneten Rails API backend'idir.
 
-Things you may want to cover:
+## 🚀 Kullanılan Teknolojiler
 
-* Ruby version
+- Ruby on Rails
+- Ruby
+- PostgreSQL
+- JWT
+- REST API
+- FastAPI entegrasyonu
+- Postman
 
-* System dependencies
+## 📌 Backend'in Sorumlulukları
 
-* Configuration
+Rails backend aşağıdaki işlemleri yönetir:
 
-* Database creation
+- Kullanıcı kayıt ve giriş işlemleri
+- JWT tabanlı kimlik doğrulama
+- Kullanıcı profil işlemleri
+- Eczanelerin yönetimi
+- Eczacı giriş işlemleri
+- Sipariş oluşturma ve görüntüleme
+- Eczacı tarafından sipariş durumlarının yönetilmesi
+- Eczane stoklarının yönetimi
+- Kullanıcı konumuna göre uygun eczanenin belirlenmesi
+- Reçete barkodunun FastAPI backend'ine gönderilmesi
 
-* Database initialization
+## 🏗️ Proje Yapısı
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```text
+app/
+├── controllers/
+│   ├── api/v1/
+│   │   ├── orders_controller.rb
+│   │   ├── pharmacies_controller.rb
+│   │   ├── pharmacist_orders_controller.rb
+│   │   ├── pharmacist_sessions_controller.rb
+│   │   ├── prescriptions_controller.rb
+│   │   ├── sessions_controller.rb
+│   │   └── users_controller.rb
+│   └── application_controller.rb
+│
+├── models/
+│   ├── user.rb
+│   ├── order.rb
+│   ├── order_item.rb
+│   ├── drugstore.rb
+│   ├── drugstore_stock.rb
+│   └── pharmacist.rb
+│
+└── services/
+    ├── json_web_token.rb
+    └── nearest_drugstore_service.rb
